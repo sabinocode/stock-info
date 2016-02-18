@@ -72,7 +72,7 @@ public class Stocks {
 	 * @param name the stock's name; example: MSFT is Microsoft's stock name.
 	 * 		GOOG is Alphabet inc., and FB is Facebook Inc.
 	 */
-	public void searchForStocks(String name) {
+	public void searchForStock(String name) {
 		name = "\"" + name;			// Add a " to the beginning of the name.
 		String csvFile = "src/stocks.csv";	// link to .csv file.
 		BufferedReader br = null;	// initialize the BufferedReader
@@ -97,9 +97,9 @@ public class Stocks {
 				divYield = stockInfo[4 + shiftAmt];
 				peRatio = stockInfo[5 + shiftAmt];
 				
-				if (shortName.equalsIgnoreCase(this.shortName)) {
+				if (name.equalsIgnoreCase(shortName)) {
 					found = true;
-					System.out.println("Stock Name: " + this.shortName + "\"");
+					System.out.println("Stock Name: " + shortName + "\"");
 					System.out.println("Company Name: " + companyName + "\"");
 					System.out.println("Date Checked: " + dateChecked + "\"");
 					System.out.println("Current Price: $" + currPrice);

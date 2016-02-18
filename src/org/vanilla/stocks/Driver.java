@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,6 +30,10 @@ public class Driver extends Canvas {
 	private JFrame frame;
 	/** The JPanel to display the stock information onto. */
 	private JPanel panel;
+	/** Scanner object temporarily TO BE REMOVED */
+	private static Scanner scan;
+	/** Stock object temporarily TO BE REMOVED */
+	private static Stocks stock;
 
 	/**
 	 * Constructor: sets the default instance variables.
@@ -61,6 +66,15 @@ public class Driver extends Canvas {
 	 */
 	public static void main(String[] args) {
 		new Driver();
+		
+		scan = new Scanner(System.in);
+		System.out.print("Enter a stock to be searched: ");
+		String n = scan.nextLine();
+		
+		stock = new Stocks();
+		stock.searchForStock(n);
+		
+		
 	}
 	
 }
