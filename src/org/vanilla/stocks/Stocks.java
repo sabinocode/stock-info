@@ -72,7 +72,7 @@ public class Stocks {
 	 * @param name the stock's name; example: MSFT is Microsoft's stock name.
 	 * 		GOOG is Alphabet inc., and FB is Facebook Inc.
 	 */
-	public void searchForStock(String name) {
+	public Stock searchForStock(String name) {
 		name = "\"" + name;			// Add a " to the beginning of the name.
 		String csvFile = "src/stocks.csv";	// link to .csv file.
 		BufferedReader br = null;	// initialize the BufferedReader
@@ -80,6 +80,7 @@ public class Stocks {
 		String cvsSplitBy = "\",";	// splits every ", it finds.
 		String afterDate = ",";		// splits every , it finds.
 		boolean found = false;
+		Stock tStock = null;
 
 		try {
 			br = new BufferedReader(new FileReader(csvFile));
@@ -99,13 +100,8 @@ public class Stocks {
 				
 				if (name.equalsIgnoreCase(shortName)) {
 					found = true;
-					System.out.println("Stock Name: " + shortName + "\"");
-					System.out.println("Company Name: " + companyName + "\"");
-					System.out.println("Date Checked: " + dateChecked + "\"");
-					System.out.println("Current Price: $" + currPrice);
-					System.out.println("Div Yeild: " + divYield + "%");
-					System.out.println("PE Ratio: " + peRatio);
-				}
+					tStock = new Stock(shortName, companyName, dateChecked, currPrice, divYield, peRatio);
+				} 
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -124,5 +120,7 @@ public class Stocks {
 		// If stock name entered isn't in database it will return an error in the terminal.
 		String returnMessage = (found) ? "": "Error: Stock not found in database.";
 		System.out.println("\n" + returnMessage);
+		
+		return tStock;
 	}
 }
