@@ -46,7 +46,7 @@ public class Stocks {
 	 */
 	private void downloadCSV() {
 		URL website;
-		Path target = new File("src/stocks.csv").toPath();
+		Path target = new File("stocks.csv").toPath();
 		
 		String link = "http://finance.yahoo.com/d/quotes.csv?s=";
 		for (int i = 0; i < stocks.length; i++) {
@@ -74,7 +74,7 @@ public class Stocks {
 	 */
 	public Stock searchForStock(String name) {
 		name = "\"" + name;			// Add a " to the beginning of the name.
-		String csvFile = "src/stocks.csv";	// link to .csv file.
+		String csvFile = "stocks.csv";	// link to .csv file.
 		BufferedReader br = null;	// initialize the BufferedReader
 		String line = null;			// initialize the String.
 		String cvsSplitBy = "\",";	// splits every ", it finds.
