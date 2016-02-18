@@ -37,6 +37,7 @@ public class Driver extends Canvas {
 	/** TO BE REMOVED */
 	private static String search = null;
 	public static boolean searchBoo = false;
+	public static Stock currentStock = null;
 	/**
 	 * Constructor: sets the default instance variables.
 	 * 	sets up the JFrame.
@@ -75,11 +76,19 @@ public class Driver extends Canvas {
 		search = n;
 		searchBoo = true;
 		
+		getCurrentStock(n);
+		
 	}
 	
-	public Stock getCurrentStock() {
+	/**
+	 * Returns the current stock that the user searched.
+	 * @param n
+	 * @return stock the current stock
+	 */
+	public static Stock getCurrentStock(String n) {
 		stock = new Stocks();
-		return stock.searchForStock("GOOG");
+		currentStock = stock.searchForStock(n);
+		return stock.searchForStock(n);
 	}
 	
 }

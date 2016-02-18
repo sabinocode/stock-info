@@ -26,8 +26,11 @@ public class MainPanel extends JPanel {
 		g.setColor(new Color(164, 224, 178));
 		g.drawString(Driver.TITLE, 5, 18);
 		g.setFont(new Font("verdana", Font.PLAIN, 11));
-		g.drawString("Stock Name: \t" + driver.getCurrentStock().getShortName(), 5, 43);
-		g.drawString("Company Name \t" + driver.getCurrentStock().getCompanyName(), 5, 58);
-		g.drawString("Current Price: \t$" + driver.getCurrentStock().getCurrentPrice(), 5, 73);
+		if (Driver.currentStock != null) {
+			g.drawString("Stock Name: \t" + Driver.currentStock.getShortName(), 5, 43);
+			g.drawString("Company Name \t" + Driver.currentStock.getCompanyName(), 5, 58);
+			g.drawString("Current Price: \t$" + Driver.currentStock.getCurrentPrice(), 5, 73);
+		}
+		repaint();
 	}
 }
